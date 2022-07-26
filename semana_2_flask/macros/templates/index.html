@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% macro error(mensaje) %}
+    <div class="error">
+        {{ mensaje }}
+    </div>
+{% endmacro %}
+
+{% block body %}
+
+    {{ error("Hubo un problema.") }}
+
+    {{ error("Hubo otro problema.") }}
+
+{% endblock %}

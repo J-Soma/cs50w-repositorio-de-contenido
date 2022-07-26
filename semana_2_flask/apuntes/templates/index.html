@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Apuntes
+{% endblock %}
+
+{% block body %}
+
+    <ul>
+        {% for apunte in apuntes %}
+            <li>{{ apunte }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{{ url_for('index') }}" method="post">
+        <input type="text" name="apunte" placeholder="Escribe un apunte">
+        <button>Agregar apunte</button>
+    </form>
+{% endblock %}
