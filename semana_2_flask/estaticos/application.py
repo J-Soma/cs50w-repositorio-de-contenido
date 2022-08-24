@@ -6,6 +6,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/more")
-def more():
-    return render_template("more.html")
+@app.route("/ver-mas")
+def ver_mas():
+    return render_template("ver-mas.html")
