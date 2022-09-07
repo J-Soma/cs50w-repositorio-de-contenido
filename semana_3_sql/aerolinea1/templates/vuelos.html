@@ -10,7 +10,7 @@
     <ul>
         {% for vuelo in vuelos %}
             <li>
-                <a href="{{ url_for('vuelo', id_vuelo=flight.id) }}">
+                <a href="{{ url_for('vuelo', id_vuelo=vuelo.id) }}">
                     {{ vuelo.origen }} to {{ vuelo.destino }}
                 </a>
             </li>
