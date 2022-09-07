@@ -9,7 +9,7 @@ db = scoped_session(sessionmaker(bind=engine))
 def main():
     vuelos = db.execute("SELECT origen, destino, duracion FROM vuelos").fetchall()
     for vuelo in vuelos:
-        print(f"{vuelo.origen} to {vuelo.destino}, {vuelo.duracion} minutes.")
+        print(f"{vuelo.origen} hacia {vuelo.destino}, {vuelo.duracion} minutos.")
 
 if __name__ == "__main__":
     main()
