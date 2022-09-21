@@ -14,8 +14,8 @@ class Vuelo(db.Model):
     duracion = db.Column(db.Integer, nullable=False)
     pasajeros = db.relationship("Pasajero", backref="vuelo", lazy=True)
 
-    def agregar_pasajero(self, name):
-        p = Pasajero(name=name, flight_id=self.id)
+    def agregar_pasajero(self, nombre):
+        p = Pasajero(nombre=nombre, id_vuelo=self.id)
         db.session.add(p)
         db.session.commit()
 

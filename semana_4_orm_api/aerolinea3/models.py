@@ -13,8 +13,8 @@ class Vuelo(db.Model):
     destino = db.Column(db.String, nullable=False)
     duracion = db.Column(db.Integer, nullable=False)
 
-    def agregar_pasajero(self, name):
-        p = Pasajero(name=name, flight_id=self.id)
+    def agregar_pasajero(self, nombre):
+        p = Pasajero(nombre=nombre, id_vuelo=self.id)
         db.session.add(p)
         db.session.commit()
 
