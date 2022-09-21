@@ -10,7 +10,7 @@
     <form action="{{ url_for('reservar') }}" method="post">
 
         <div class="form-group">
-            <select class="form-control" name="flight_id">
+            <select class="form-control" name="id_vuelo">
                 {% for vuelo in vuelos %}
                     <option value="{{ vuelo.id }}">{{ vuelo.origen }} hacia {{ vuelo.destino }}</option>
                 {% endfor %}
