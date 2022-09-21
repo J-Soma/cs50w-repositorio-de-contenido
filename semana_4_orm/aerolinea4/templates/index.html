@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Vuelos
+{% endblock %}
+
+{% block body %}
+    <h1>Reservar un vuelo</h1>
+
+    <form action="{{ url_for('reservar') }}" method="post">
+
+        <div class="form-group">
+            <select class="form-control" name="flight_id">
+                {% for vuelo in vuelos %}
+                    <option value="{{ vuelo.id }}">{{ vuelo.origen }} hacia {{ vuelo.destino }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="nombre" placeholder="Nombre del pasajero">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary">Reservar vuelo</button>
+        </div>
+
+    </form>
+{% endblock %}

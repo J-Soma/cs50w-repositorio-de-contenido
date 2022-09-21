@@ -1,0 +1,27 @@
+import os
+
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+
+class Vuelo(db.Model):
+    __tablename__ = "vuelos"
+    id = db.Column(db.Integer, primary_key=True)
+    origen = db.Column(db.String, nullable=False)
+    destino = db.Column(db.String, nullable=False)
+    duracion = db.Column(db.Integer, nullable=False)
+    pasajeros = db.relationship("Pasajero", backref="vuelo", lazy=True)
+
+    def agregar_pasajero(self, name):
+        p = Pasajero(name=name, flight_id=self.id)
+        db.session.add(p)
+        db.session.commit()
+
+
+class Pasajero(db.Model):
+    __tablename__ = "pasajeros"
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String, nullable=False)
+    id_vuelo = db.Column(db.Integer, db.ForeignKey("vuelos.id"), nullable=False)
