@@ -1,10 +1,11 @@
 import requests
+import os
 
 def main():
     base = input("Primer moneda: ")
     otra = input("Segunda moneda: ")
-    respuesta = requests.get("https://api.fixer.io/latest",
-                       params={"base": base, "symbols": otra})
+    respuesta = requests.get(f"https://api.apilayer.com/fixer/latest?symbols={otra}&base={base}",
+                       headers={"apikey": os.getenv("API_KEY")})
     if respuesta.status_code != 200:
         raise Exception("ERROR:Consulta de API no exitosa.")
     datos = respuesta.json()
