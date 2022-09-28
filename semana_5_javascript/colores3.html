@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                // Hacer que el color del título cambie al seleccionar una opción
+                document.querySelector('#cambiar-color').onchange = function() {
+                    document.querySelector('#hola').style.color = this.value;
+                };
+
+            });
+        </script>
+        <title>Mi Sitio Web</title>
+    </head>
+    <body>
+        <h1 id="hola">Hola!</h1>
+        <select id="cambiar-color">
+            <option value="black">Negro</option>
+            <option value="red">Rojo</option>
+            <option value="blue">Azul</option>
+            <option value="green">Verde</option>
+        </select>
+    </body>
+</html>

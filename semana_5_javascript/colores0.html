@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // Cambiar color de fuente a rojo
+                document.querySelector('#rojo').onclick = function() {
+                    document.querySelector('#hola').style.color = 'red';
+                };
+
+                // Cambiar color de fuente a azul
+                document.querySelector('#azul').onclick = function() {
+                    document.querySelector('#hola').style.color = 'blue';
+                };
+
+                // Cambiar color de fuente a verde
+                document.querySelector('#verde').onclick = function() {
+                    document.querySelector('#hola').style.color = 'green';
+                };
+            });
+        </script>
+        <title>Mi Sitio Web</title>
+    </head>
+    <body>
+        <h1 id="hola">Hola!</h1>
+        <button id="rojo">Rojo</button>
+        <button id="verde">Verde</button>
+        <button id="azul">Azul</button>
+    </body>
+</html>

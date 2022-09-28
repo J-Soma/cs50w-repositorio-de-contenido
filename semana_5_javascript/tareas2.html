@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                // Por defecto, el botón de enviar está deshabilitado
+                document.querySelector('#enviar').disabled = true;
+
+                // Habilitar el botón solo si hay texto en el campo de texto
+                document.querySelector('#tarea').onkeyup = () => {
+                    if (document.querySelector('#tarea').value.length > 0)
+                        document.querySelector('#enviar').disabled = false;
+                    else
+                        document.querySelector('#enviar').disabled = true;
+                };
+
+                document.querySelector('#nueva-tarea').onsubmit = () => {
+
+                    // Crear nuevo elemento para la lista
+                    const li = document.createElement('li');
+                    li.innerHTML = document.querySelector('#tarea').value;
+
+                    // Agregar nuevo elemento a la lista de tareas
+                    document.querySelector('#tareas').append(li);
+
+                    // Limpiar el campo de texto y deshabilitar el botón nuevamente
+                    document.querySelector('#tarea').value = '';
+                    document.querySelector('#enviar').disabled = true;
+
+                    // Detener al formulario de recargar la página
+                    return false;
+                };
+
+            });
+        </script>
+        <title>Tareas</title>
+    </head>
+    <body>
+        <h1>Tareas</h1>
+        <ul id="tareas">
+        </ul>
+        <form id="nueva-tarea">
+            <input id="tarea" autocomplete="off" autofocus placeholder="Nueva tarea" type="text">
+            <input id="enviar" type="submit">
+        </form>
+    </body>
+</html>

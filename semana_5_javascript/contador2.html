@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('button').onclick = contar;
+            });
+
+            let contador = 0;
+
+            function contar() {
+                contador++;
+                document.querySelector('#contador').innerHTML = contador;
+
+                if (contador % 10 === 0) {
+                    alert(`El contador está en ${contador}!`);
+                }
+            }
+
+        </script>
+        <title>Mi Sitio Web</title>
+    </head>
+    <body>
+        <h1 id="contador">0</h1>
+        <button>Has clic aquí!</button>
+    </body>
+</html>

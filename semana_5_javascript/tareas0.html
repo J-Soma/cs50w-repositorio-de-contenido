@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                document.querySelector('#nueva-tarea').onsubmit = () => {
+
+                    // Crear nuevo elemento para la lista
+                    const li = document.createElement('li');
+                    li.innerHTML = document.querySelector('#tarea').value;
+
+                    // Agregar nuevo elemento a lista de tareas
+                    document.querySelector('#tareas').append(li);
+
+                    // Limpiar campo de texto
+                    document.querySelector('#tarea').value = '';
+
+                    // Detener al formulario de recargar la página
+                    return false;
+                };
+
+            });
+        </script>
+        <title>Tareas</title>
+    </head>
+    <body>
+        <h1>Tareas</h1>
+        <ul id="tareas">
+        </ul>
+        <form id="nueva-tarea">
+            <input id="tarea" autocomplete="off" autofocus placeholder="Nueva tarea" type="text">
+            <input type="submit">
+        </form>
+    </body>
+</html>

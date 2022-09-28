@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('#formulario').onsubmit = function() {
+                    const nombre = document.querySelector('#nombre').value;
+                    alert(`Hola ${nombre}!`);
+                };
+            });
+        </script>
+        <title>Mi Sitio Web</title>
+    </head>
+    <body>
+        <form id="formulario">
+            <input id="nombre" autocomplete="off" autofocus placeholder="Nombre" type="text">
+            <input type="submit">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', () => {
+                setInterval(contar, 1000);
+            });
+
+            let contador = 0;
+
+            function contar() {
+                contador++;
+                document.querySelector('#contador').innerHTML = contador;
+            }
+
+        </script>
+        <title>Mi Sitio Web</title>
+    </head>
+    <body>
+        <h1 id="contador">0</h1>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+
+            // Establecer el valor inicial de contador a 0
+            if (!localStorage.getItem('contador'))
+                localStorage.setItem('contador', 0);
+
+            // Cargar el valor actual de contador
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#contador').innerHTML = localStorage.getItem('contador');
+
+                // Contar cada vez que el botón es presionado
+                document.querySelector('button').onclick = () => {
+                    // Incrementar el contador actual
+                    let contador = localStorage.getItem('contador');
+                    contador++;
+
+                    // Actualizar contador
+                    document.querySelector('#contador').innerHTML = contador;
+                    localStorage.setItem('contador', contador);
+                }
+            });
+
+        </script>
+        <title>Mi Sitio Web</title>
+    </head>
+    <body>
+        <h1 id="contador"></h1>
+        <button>Has clic aquí!</button>
+    </body>
+</html>
