@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        <title>Conversor de monedas</title>
+    </head>
+    <body>
+        <form id="formulario">
+            <input id="moneda" autocomplete="off" autofocus placeholder="Moneda" type="text">
+            <input type="submit" value="Obtener tasa de cambio">
+        </form>
+        <br>
+        <div id="resultado"></div>
+    </body>
+</html>
