@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+    </head>
+    <body>
+        <svg id="svg" style="width:100%; height:800px"/>
+    </body>
+    <script>
+
+        const svg = d3.select('#svg');
+
+        svg.append('rect')
+           .attr('x', 100)
+           .attr('y', 10)
+           .attr('width', 200)
+           .attr('height', 500)
+           .style('fill', 'black');
+
+        const rojo = svg.append('circle')
+                       .attr('cx', 200)
+                       .attr('cy', 100)
+                       .attr('r', 75)
+                       .style('fill', 'grey');
+
+        const amarillo = svg.append('circle')
+                          .attr('cx', 200)
+                          .attr('cy', 260)
+                          .attr('r', 75)
+                          .style('fill', 'grey');
+
+        const verde = svg.append('circle')
+                         .attr('cx', 200)
+                         .attr('cy', 420)
+                         .attr('r', 75)
+                         .style('fill', 'grey');
+
+        rojo.on('click', () => {
+            rojo.style('fill', 'red');
+            amarillo.style('fill', 'grey');
+            verde.style('fill', 'grey');
+        });
+
+        amarillo.on('click', () => {
+            rojo.style('fill', 'grey');
+            amarillo.style('fill', 'yellow');
+            verde.style('fill', 'grey');
+        });
+
+        verde.on('click', () => {
+            rojo.style('fill', 'grey');
+            amarillo.style('fill', 'grey');
+            verde.style('fill', 'green');
+        });
+
+    </script>
+</html>
