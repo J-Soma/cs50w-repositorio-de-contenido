@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mi Página Web</title>
+        <style>
+            li {
+                line-height: 30px;
+            }
+            img {
+                height: 30px;
+                vertical-align: middle;
+            }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+        <script id="resultado" type="text/template">
+            <li>
+                Has tirado:
+                {{#each valores}}
+                    <img alt="{{ this }}" title="{{ this }}" src="img/{{ this }}.png">
+                {{/each}}
+                (Total: {{ total }})
+            </li>
+        </script>
+        <script>
+
+            // Plantilla para resultados de tiro
+            const plantilla = Handlebars.compile(document.querySelector('#resultado').innerHTML);
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#tirar').onclick = ()  => {
+
+                    // Generar tiradas aleatorias.
+                    const contador = parseInt(document.querySelector('#contador').value);
+                    const tiradas = [];
+                    let total = 0;
+                    for (let i = 0; i < contador; i++) {
+                        const valor = Math.floor(Math.random() * 6) +  1;
+                        tiradas.push(valor);
+                        total += valor;
+                    };
+
+                    // Agregar resultados de tiradas al DOM.
+                    const contenido = plantilla({'valores': tiradas, 'total': total});
+                    document.querySelector('#tiradas').innerHTML += content;
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <input id="contador" type="number" placeholder="N&uacute;mero de tiros" min="1" value="1">
+        <button id="tirar">Tirar</button>
+        <ul id="tiradas">
+        </ul>
+    </body>
+</html>

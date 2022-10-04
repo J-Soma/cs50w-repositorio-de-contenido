@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mi Página Web</title>
+        <style>
+            li {
+                line-height: 30px;
+            }
+            img {
+                height: 30px;
+                vertical-align: middle;
+            }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+        <script>
+
+            // Plantilla para resultados de tiro
+            const plantilla = Handlebars.compile("<li>Has tirado: <img src=\"img/{{ valor }}.png\"></li>");
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#tirar').onclick = ()  => {
+
+                    // Generar un tiro aleatorio.
+                    const tiro = Math.floor((Math.random() * 6) + 1);
+
+                    // Agregar resultados de tiro al DOM.
+                    const contenido = plantilla({'valor': tiro});
+                    document.querySelector('#tiradas').innerHTML += contenido;
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <button id="tirar">Tirar</button>
+        <ul id="tiradas">
+        </ul>
+    </body>
+</html>
