@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My Webpage</title>
+        <title>Mi P&aacute;gina Web</title>
         <script>
 
             document.addEventListener('DOMContentLoaded', () => {
 
-                // Start by loading first page.
-                load_page('first');
+                // Iniciamos cargando la primer página.
+                cargar_pagina('primera');
 
-                // Set links up to load new pages.
+                // Establecer enlaces para cargar nuevas páginas.
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.onclick = () => {
-                        load_page(link.dataset.page);
+                        cargar_pagina(link.dataset.pagina);
                         return false;
                     };
                 });
             });
 
-            // Renders contents of new page in main view.
-            function load_page(name) {
-                const request = new XMLHttpRequest();
-                request.open('GET', `/${name}`);
-                request.onload = () => {
-                    const response = request.responseText;
-                    document.querySelector('#body').innerHTML = response;
+            // Muestra el contenido de una página en la vista principal.
+            function cargar_pagina(nombre) {
+                const consulta = new XMLHttpRequest();
+                consulta.open('GET', `/${nombre}`);
+
+                consulta.onload = () => {
+                    const respuesta = consulta.responseText;
+                    document.querySelector('#body').innerHTML = respuesta;
                 };
-                request.send();
+                consulta.send();
             }
 
         </script>
     </head>
     <body>
         <ul id="nav">
-            <li><a href="" class="nav-link" data-page="first">First Page</a></li>
-            <li><a href="" class="nav-link" data-page="second">Second Page</a></li>
-            <li><a href="" class="nav-link" data-page="third">Third Page</a></li>
+            <li><a href="" class="nav-link" data-pagina="primera">Primera p&aacute;gina</a></li>
+            <li><a href="" class="nav-link" data-pagina="segunda">Segunda p&aacute;gina</a></li>
+            <li><a href="" class="nav-link" data-pagina="tercera">Tercera p&aacute;gina</a></li>
         </ul>
         <hr>
         <div id="body">
