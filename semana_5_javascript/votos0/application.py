@@ -12,7 +12,7 @@ socketio = SocketIO(app)
 def index():
     return render_template("index.html")
 
-@socketio.on("submit vote")
-def vote(data):
-    selection = data["selection"]
-    emit("announce vote", {"selection": selection}, broadcast=True)
+@socketio.on("guardar voto")
+def voto(dato):
+    seleccion = dato["seleccion"]
+    emit("anunciar voto", {"seleccion": seleccion}, broadcast=True)
