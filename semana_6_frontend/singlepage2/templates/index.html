@@ -6,48 +6,47 @@
 
             document.addEventListener('DOMContentLoaded', () => {
 
-                // Start by loading first page.
-                load_page('first');
+            // Iniciamos cargando la primer página.
+            cargar_pagina('primera');
 
-                // Set links up to load new pages.
+                // Establecer enlaces para cargar nuevas páginas.
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.onclick = () => {
-                        const page = link.dataset.page;
-                        load_page(page);
+                        cargar_pagina(link.dataset.pagina);
                         return false;
                     };
                 });
             });
 
-            // Update text on popping state.
+            // Actualizar texto al ir atrás o adelante.
             window.onpopstate = e => {
-                const data = e.state;
-                document.title = data.title;
-                document.querySelector('#body').innerHTML = data.text;
+                const datos = e.state;
+                document.title = datos.titulo;
+                document.querySelector('#body').innerHTML = datos.texto;
             };
 
-            // Renders contents of new page in main view.
-            function load_page(name) {
-                const request = new XMLHttpRequest();
-                request.open('GET', `/${name}`);
-                request.onload = () => {
-                    const response = request.responseText;
-                    document.querySelector('#body').innerHTML = response;
+            // Muestra el contenido de una página en la ivsta principal.
+            function cargar_pagina(nombre) {
+                const consulta = new XMLHttpRequest();
+                consulta.open('GET', `/${nombre}`);
 
-                    // Push state to URL.
-                    document.title = name;
-                    history.pushState({'title': name, 'text': response}, name, name);
+                consulta.onload = () => {
+                    const respuesta = consulta.responseText;
+                    document.querySelector('#body').innerHTML = respuesta;
+
+                    // Mandar estado al URL.
+                    document.title = nombre;
+                    history.pushState({"titulo":nombre, "texto":respuesta}, "", nombre);
                 };
-                request.send();
+                consulta.send();
             }
-
         </script>
     </head>
     <body>
         <ul id="nav">
-            <li><a href="" class="nav-link" data-page="first">First Page</a></li>
-            <li><a href="" class="nav-link" data-page="second">Second Page</a></li>
-            <li><a href="" class="nav-link" data-page="third">Third Page</a></li>
+            <li><a href="" class="nav-link" data-pagina="primera">Primera p&aacute;gina</a></li>
+            <li><a href="" class="nav-link" data-pagina="segunda">Segunda p&aacute;gina</a></li>
+            <li><a href="" class="nav-link" data-pagina="tercera">Tercera p&aacute;gina</a></li>
         </ul>
         <hr>
         <div id="body">
