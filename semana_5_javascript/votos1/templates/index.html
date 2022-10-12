@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="{{url_for('static', filename='socket.io.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        <title>Votos</title>
+    </head>
+    <body>
+        <div>Votos "Si": <span id="si">{{ votos["si"] }}</span></div>
+        <div>Votos "No": <span id="no">{{ votos["no"] }}</span></div>
+        <div>Votos "Tal vez": <span id="talvez">{{ votos["talvez"] }}<span></div>
+        <hr>
+        <button data-voto="si">Si</button>
+        <button data-voto="no">No</button>
+        <button data-voto="talvez">Tal vez</button>
+    </body>
+</html>

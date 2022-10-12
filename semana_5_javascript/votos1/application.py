@@ -8,16 +8,16 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
-votes = {"yes": 0, "no": 0, "maybe": 0}
+votos = {"si": 0, "no": 0, "talvez": 0}
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", votes=votes)
+    return render_template("index.html", votos=votos)
 
 
-@socketio.on("submit vote")
-def vote(data):
-    selection = data["selection"]
-    votes[selection] += 1
-    emit("vote totals", votes, broadcast=True)
+@socketio.on("guardar voto")
+def voto(dato):
+    seleccion = dato["seleccion"]
+    votos[seleccion] += 1
+    emit("total votos", votos, broadcast=True)
