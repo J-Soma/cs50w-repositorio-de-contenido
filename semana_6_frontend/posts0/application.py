@@ -11,17 +11,17 @@ def index():
 @app.route("/posts", methods=["POST"])
 def posts():
 
-    # Get start and end point for posts to generate.
-    start = int(request.form.get("start") or 0)
-    end = int(request.form.get("end") or (start + 9))
+    # Obtener punto de inicio y fin para generar posts.
+    inicio = int(request.form.get("inicio") or 0)
+    fin = int(request.form.get("fin") or (inicio + 9))
 
-    # Generate list of posts.
-    data = []
-    for i in range(start, end + 1):
-        data.append(f"Post #{i}")
+    # Generar lista de posts.
+    datos = []
+    for i in range(inicio, fin + 1):
+        datos.append(f"Post #{i}")
 
-    # Artificially delay speed of response.
+    # Demorar artificialmente la velocidad de respuesta.
     time.sleep(1)
 
-    # Return list of posts.
-    return jsonify(data)
+    # Retornar lista de posts.
+    return jsonify(datos)

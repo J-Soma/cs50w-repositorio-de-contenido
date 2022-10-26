@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My Webpage</title>
+        <title>Mi Página Web</title>
         <style>
             .post {
                 background-color: #77dd11;
@@ -15,56 +15,56 @@
         </style>
         <script>
 
-            // Start with first post.
-            let counter = 1;
+            // Empezar con la primer publicación.
+            let contador = 1;
 
-            // Load posts 20 at a time.
-            const quantity = 20;
+            // Cargar 20 publicaciones a la vez.
+            const cantidad = 20;
 
-            // When DOM loads, render the first 20 posts.
+            // Al cargar el DOM, renderizar las primeras 20 publicaciones.
             document.addEventListener('DOMContentLoaded', load);
 
-            // If scrolled to bottom, load the next 20 posts.
+            // Si se ha desplazado hasta el final, cargar las siguientes 20 publicaciones.
             window.onscroll = () => {
                 if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
                     load();
                 }
             };
 
-            // Load next set of posts.
+            // Cargar siguiente conjunto de publicaciones.
             function load() {
 
-                // Set start and end post numbers, and update counter.
-                const start = counter;
-                const end = start + quantity - 1;
-                counter = end + 1;
+                // Establecer números de post de inicio y fin, y actualizar contador.
+                const inicio = contador;
+                const fin = inicio + cantidad - 1;
+                contador = fin + 1;
 
-                // Open new request to get new posts.
-                const request = new XMLHttpRequest();
-                request.open('POST', '/posts');
-                request.onload = () => {
-                    const data = JSON.parse(request.responseText);
-                    data.forEach(add_post);
+                // Abrir nueva solicitud para obtener nuevos posts.
+                const solicitud = new XMLHttpRequest();
+                solicitud.open('POST', '/posts');
+                solicitud.onload = () => {
+                    const datos = JSON.parse(solicitud.responseText);
+                    datos.forEach(agregar_post);
                 };
 
-                // Add start and end points to request data.
-                const data = new FormData();
-                data.append('start', start);
-                data.append('end', end);
+                //Agregar puntos de inicio y fin a parametros de la solicitud.
+                const parametros = new FormData();
+                parametros.append('inicio', inicio);
+                parametros.append('fin', fin);
 
-                // Send request.
-                request.send(data);
+                // Enviar solicitud.
+                solicitud.send(parametros);
             };
 
-            // Add a new post with given contents to DOM.
-            function add_post(contents) {
+            // Agregar un nuevo post con contenido definido al DOM.
+            function agregar_post(contenido) {
 
-                // Create new post.
+                // Crear nuevo post.
                 const post = document.createElement('div');
                 post.className = 'post';
-                post.innerHTML = contents;
+                post.innerHTML = contenido;
 
-                // Add post to DOM.
+                // Agregar post al DOM.
                 document.querySelector('#posts').append(post);
             };
         </script>
